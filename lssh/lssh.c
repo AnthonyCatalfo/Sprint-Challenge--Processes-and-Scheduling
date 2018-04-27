@@ -101,8 +101,17 @@ int main(void)
         #endif
         
         /* Add your code for implementing the shell's logic here */
+            pid_t  pid;
+
+     pid = fork();
+     if (pid == 0){ //child
+         execvp(args[0],args);
+         exit(1);// in case of an error lets exit
+     } else { //parent
+          wait(NULL);
+    }
+    }
+    return 0;
         
     }
 
-    return 0;
-}
